@@ -14,14 +14,14 @@ const Outer = styled.div`
     min-height: 350px;
     max-height: ${props => props.shouldHideOverflow ? '350px' : '90vh'};
     flex: 1 0 auto;
-    margin-top: 10px;
+    margin: 10px 0px 35px 0px;
     border-radius: 5px;
     display: flex;
     border: 0.5px solid rgba(0,0,0,0.09);
     border-bottom: 1px solid rgba(0,0,0,0.3);
 
     flex-direction: column;
-        background-color: #FFFFFFA5;
+    background-color: #FFFFFFA5;
     overflow: hidden;
     box-shadow: 1px 1px 10px rgba(0,0,0,.2);
     transition: max-height 0.2s ease;
@@ -55,10 +55,10 @@ const LightText = styled.span`
 `
 
 const Stats = styled.div`
-    padding: 5px;
+    padding: 10px 10px 10px 25px;
     max-width: 100px;
     flex: 0 0 auto;
-    background-color: transparent;   
+    background-color: #f7f7f7;   
     flex-direction: column;
     display: flex;
     justify-content: flex-start;
@@ -66,7 +66,7 @@ const Stats = styled.div`
 `
 
 const Content = styled.div`    
-    background-color: transparent;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: row;
     flex: 1;
@@ -80,6 +80,10 @@ const Content = styled.div`
 const StyledIcon = styled(Icon)`
     width: 43px;
     height: 43px;
+`
+
+const Counter = styled.span`
+    min-width: 30px;
 `
 
 function StatLine(props) {
@@ -207,7 +211,7 @@ export default function HostCard({ data }) {
                   onClick={toggleOnlyOk}
                   desaturate={isViewFiltered && isViewFiltered !== 'ok'}>
                     <StyledIcon color={palette.ok} path={mdiCheckCircle}/>
-                    <span>{runningContainersCount}</span>
+                    <Counter>{runningContainersCount}</Counter>
                 </StatLine>
                 <StatLine
                   key={'warn-stat'}
@@ -216,7 +220,7 @@ export default function HostCard({ data }) {
                   onClick={toggleOnlyWarning}
                   desaturate={isViewFiltered && isViewFiltered !== 'warning'}>
                     <StyledIcon color={palette.warning} path={mdiAlertOutline}/>
-                    <span>{warningContainersCount}</span>
+                    <Counter>{warningContainersCount}</Counter>
                 </StatLine>
                 <StatLine
                   key={'error-stat'}
@@ -225,7 +229,7 @@ export default function HostCard({ data }) {
                   onClick={toggleOnlyError}
                   desaturate={isViewFiltered && isViewFiltered !== 'error'}>
                     <StyledIcon color={palette.error} path={mdiCloseCircle}/>
-                    <span>{errorContainersCount}</span>
+                    <Counter>{errorContainersCount}</Counter>
                 </StatLine>
             </Stats>
             <div style={{ position: 'relative', flex: 1 }}>
